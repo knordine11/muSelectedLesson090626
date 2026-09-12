@@ -539,13 +539,13 @@ background: &quot;white&quot;;</string>
     <number>7</number>
    </property>
    <property name="value">
-    <number>1</number>
+    <number>3</number>
    </property>
    <property name="orientation">
     <enum>Qt::Orientation::Horizontal</enum>
    </property>
    <property name="tickPosition">
-    <enum>QSlider::TickPosition::TicksAbove</enum>
+    <enum>QSlider::TickPosition::TicksBelow</enum>
    </property>
    <property name="tickInterval">
     <number>1</number>

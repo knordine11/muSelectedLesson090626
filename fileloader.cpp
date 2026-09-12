@@ -129,7 +129,7 @@ void FileLoader::GetFileList(int startingNote)
 
 void FileLoader::GetRandomTestSet(QString randomNotes)
 {
-    qDebug() << "test group = " << randomNotes;
+    qDebug() << "test group = " << randomNotes;    
     QList<int> seeds;
     QStringList items = randomNotes.split(',');
     for(QString item : items)
@@ -139,7 +139,7 @@ void FileLoader::GetRandomTestSet(QString randomNotes)
         seeds.append(temp);
     }
     qDebug() << seeds;
-    // QList<int> testNotes[20];
+    testNotes.clear();
     for(int i=0; i<20; i++)
     {
         int index = rand() % seeds.size();

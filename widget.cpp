@@ -23,9 +23,11 @@ extern int frame_size;
 extern int frame_end;
 extern int rec_arr_end;
 extern QString currentlesson;
-extern QList<QByteArray> rawRecArrays;
 extern QList<QString> gNote;
+extern QList<QString> gKey;
 extern QList<QString> gTestGroup;
+extern QList<QByteArray> rawRecArrays;
+extern QList<int> testNotes;
 const QList <QString> note_letters = {"C", "C#", "D", "D#", "E",
                                      "F", "F#", "G", "G#", "A", "A#", "B" };
 int curLessonInt;
@@ -193,6 +195,7 @@ Widget::Widget(QWidget *parent)
     ui->lb_arrow->move(800, 100);
     FileLoader::ReadConfig();
     FileLoader::ReadLesson();
+    ui->btnStart->setVisible(false);
     qDebug() << "gTestGroup = " << gTestGroup;
     qDebug() << "gNote = " << gNote;
     // load cboLessons
@@ -263,8 +266,6 @@ void buildkbNotePlayList(int tonicNote)
     kbNotePlayLists.append(kbNoteFileName);
     kbNoteFileName = tonicNote + 12;
     kbNotePlayLists.append(kbNoteFileName);
-
-
     qDebug() << kbNotePlayLists;
 }
 
@@ -290,13 +291,13 @@ void Widget::paintEvent(QPaintEvent * /* event */)
 
 void Widget::on_btnStart_clicked()
 {
+    MicThread.start();
 
-
-    restartAudioStream();
     qDebug() << "start pushed...";
     ui->btnStart->setVisible(false);
     qDebug() << "starting...";
     // get sound array set
+    m_Speaker->clearBuffer();
     tonicNote = tonic_map[gNote[listIndex]];
     qDebug() << tonicNote;
     qDebug() << gNote[listIndex];
@@ -304,9 +305,11 @@ void Widget::on_btnStart_clicked()
     files.GetFileList(tonicNote);
     buildkbNotePlayList(tonicNote);
     FileLoader::GetRandomTestSet(gTestGroup[listIndex]);
+    qDebug() << gTestGroup[listIndex];
     playedCnt = 0;
     goodCnt = 0;
     nPos = 0;
+    restartAudioStream();
     do_Lesson(nPos);
     nPos++;
 }
@@ -555,6 +558,10 @@ void Widget::Got_Note(int kbValue)
         ui->btnStart->setVisible(true);
         MicThread.quit();
         SpeakerThread.quit();
+        kbNotePlayLists.clear();
+        noteFiles.clear();
+        testNotes.clear();
+        rawRecArrays.clear();
         return;
     }
     else
@@ -594,6 +601,7 @@ void Widget::on_cboLessonSelect_currentIndexChanged(int index)
     FileLoader::GetRandomTestSet(gTestGroup[listIndex]);
     qDebug() << "random = " << gTestGroup[listIndex];
     ui->txtLessonNumber->setText(currentlesson);
+    ui->btnStart->setVisible(true);
 }
 
 void Widget::on_sldDuration_valueChanged(int value)
