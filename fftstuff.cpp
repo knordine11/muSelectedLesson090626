@@ -189,6 +189,10 @@ void FftStuff::DoIt(int beg, int lengh)
     }
     else
     {
+        if(pickleFlag)
+        {
+            FileLoader::postRecArr();  //pickle call
+        }
         int kbValue = noteC_no + noteC_oct*12;
         emit valueChanged(kbValue, note_acc);
         qDebug()<< ">>>>>>oct value = " << noteC_oct;

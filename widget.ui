@@ -381,7 +381,7 @@ background: &quot;white&quot;;</string>
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>50</y>
      <width>80</width>
      <height>30</height>
     </rect>
@@ -498,8 +498,8 @@ background: &quot;white&quot;;</string>
   <widget class="QLineEdit" name="txtPlayed">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>90</y>
+     <x>200</x>
+     <y>50</y>
      <width>31</width>
      <height>31</height>
     </rect>
@@ -508,10 +508,10 @@ background: &quot;white&quot;;</string>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>60</y>
-     <width>141</width>
-     <height>21</height>
+     <x>240</x>
+     <y>10</y>
+     <width>111</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -555,7 +555,7 @@ background: &quot;white&quot;;</string>
    <property name="geometry">
     <rect>
      <x>120</x>
-     <y>100</y>
+     <y>60</y>
      <width>61</width>
      <height>21</height>
     </rect>
@@ -573,7 +573,7 @@ background: &quot;white&quot;;</string>
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>90</y>
+     <y>50</y>
      <width>31</width>
      <height>31</height>
     </rect>
@@ -600,8 +600,8 @@ background: &quot;white&quot;;</string>
   <widget class="QLineEdit" name="txtLessonNumber">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>50</y>
+     <x>380</x>
+     <y>10</y>
      <width>71</width>
      <height>31</height>
     </rect>
@@ -614,7 +614,7 @@ background: &quot;white&quot;;</string>
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>100</y>
+     <y>60</y>
      <width>61</width>
      <height>21</height>
     </rect>
@@ -626,6 +626,63 @@ background: &quot;white&quot;;</string>
    </property>
    <property name="text">
     <string>Good</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnPickle">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>80</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border: raised;
+border-width:2px;
+background:white;</string>
+   </property>
+   <property name="text">
+    <string>Pickle ON</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lb_PickleStatus">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>90</y>
+     <width>37</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>OFF</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>100</y>
+     <width>71</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pickle is</string>
    </property>
   </widget>
  </widget>

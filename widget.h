@@ -107,6 +107,8 @@ private slots:
 
     void on_sldDuration_valueChanged(int value);
 
+    void on_btnPickle_clicked();
+
 private:
     void initializeAudioInput(const QAudioDevice &deviceInfo);
     void initializeAudioOutput(const QAudioDevice &deviceInfo);

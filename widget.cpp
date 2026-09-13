@@ -51,6 +51,7 @@ int displayDuration = 3000;
 int playDuration = 3000;
 QString lessonData = "";
 int scoreTotals = 0;
+bool pickleFlag = false;
 
 Microphone::Microphone(const QAudioFormat &format) : m_format(format) {
     qDebug()<<" YOU SHOULD SEE THIS ";
@@ -550,7 +551,6 @@ void Widget::Got_Note(int kbValue)
                              "border-style: outset;"
                              " border-width: 3px; border-color: black;}");
 
-    // m_Microphone->start();
     ui->lb_Octave->setText("");
     ui->lb_arrow->move(800, 100);
     qDebug() << "Keyboard value heard: " << kbValue;
@@ -568,7 +568,6 @@ void Widget::Got_Note(int kbValue)
     {
         play_next_note();
     }
-
 }
 
 void Widget::play_next_note()
@@ -608,3 +607,20 @@ void Widget::on_sldDuration_valueChanged(int value)
 {
     qDebug() << "val = " << value;
 }
+
+void Widget::on_btnPickle_clicked()
+{
+    if(!pickleFlag)
+    {
+        pickleFlag = true;
+        ui->btnPickle->setText("Pickle OFF");
+        ui->lb_PickleStatus->setText("ON");
+    }
+    else
+    {
+        pickleFlag = false;
+        ui->btnPickle->setText("Pickle ON");
+        ui->lb_PickleStatus->setText("OFF");
+    }
+}
+
