@@ -14,6 +14,7 @@
 #include <QMessageBox>
 #include <QUrl>
 #include <QTimer>
+#include <QDir>
 
 extern bool collectMicData;
 extern double rec_arr[];    // DEFINED AS DOUBLE FOR FFTW
@@ -191,6 +192,17 @@ Widget::Widget(QWidget *parent)
     const QAudioDevice &defaultDeviceInfo = QMediaDevices::defaultAudioInput();
     initializeAudioInput(QMediaDevices::defaultAudioInput());
     initializeAudioOutput(m_devicesOut->defaultAudioOutput());
+    // Create QtData directory if missing
+    QString path = "C:/QtData";
+    QDir dir(path);
+    if (!dir.exists()) {
+        if (dir.mkpath(path)) {
+            qDebug() << "Directory successfully created!";
+        } else {
+            qDebug() << "Failed to create directory.";
+        }
+    }
+
     QPixmap pix(":/img/down-arrow.png");
     ui->lb_arrow->setPixmap(pix);
     ui->lb_arrow->move(800, 100);

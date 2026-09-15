@@ -203,7 +203,7 @@ void FileLoader::postRecArr()
 {
     QString pickleName = "Pickle" + QString::number(QDateTime::currentSecsSinceEpoch());
 
-    QFile file4("C://QtpData/" + pickleName + ".dat");
+    QFile file4("C://QtData/" + pickleName + ".dat");
     if (!file4.open(QIODevice::WriteOnly | QIODevice::Text))
     {
         qCritical("Open failed");
